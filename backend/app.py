@@ -1,8 +1,21 @@
 from flask_cors import CORS
 import os
+from flask import Flask, request, jsonify, render_template, send_from_directory
 
-app = Flask(__name__)
+app = Flask(__name__,  static_folder="dist", static_url_path="")
 CORS(app)
+
+
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve_react(path):
+    if path != "" and (path.startswith('static/') or path.startswith('assets/')):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
+
+
 
 @app.route('/ping', methods=['GET'])
 def ping():
@@ -21,7 +34,7 @@ def health():
     })
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 5040))
     app.run(host='0.0.0.0', port=port, debug=True) 
-from flask import Flask, jsonify
+
  
