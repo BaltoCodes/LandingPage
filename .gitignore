@@ -1,0 +1,10 @@
+
+
+.env
+backend/.env
+.venv
+backend/.venv
+
+
+node_modules/
+package-lock.json

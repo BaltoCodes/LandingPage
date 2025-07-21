@@ -5,7 +5,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        orbitron: ['Orbitron', 'sans-serif'],
+          orbitron: ['Orbitron',  'sans-serif'],
+          exo2: ['Exo 2',  'sans-serif'],
       },
       colors: {
         futuristic: {
@@ -18,6 +19,8 @@ module.exports = {
           300: '#c4b5fd',
         },
         orb: '#a259f7',
+        electric: '#a2597f',
+        light: '#d1a9ff'
       },
       boxShadow: {
         'orb-glow': '0 0 40px 10px #a259f7',

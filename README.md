@@ -11,7 +11,7 @@ Python - Node JS
 
 This web app runs with a Vite React frontend (JavaScript / HTML / TailwindCSS) and a Python back-end (Flask)
 
-##Install 
+## Install 
 
 ```
 git clone 
