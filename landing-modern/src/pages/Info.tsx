@@ -73,21 +73,21 @@ const Info: React.FC = () => {
             />
           </div>
           <div className="p-6 bg-white-100 rounded-lg shadow-md text-left w-full">
-            <p className="text-base leading-relaxed m-0 justify-center">
+            <p className="text-base leading-relaxed m-0 justify-center text-white font-bold">
               Hi there, my name is Alexis Archambault. I'm a Quantitative Analyst intern at Opensee, a fintech startup, and I'm currently attending IMT Atlantique for a master of computer science and financial engineering. I am a coding enthusiast and a finance (also de-fi) lover.
             </p>
           </div>
         </div>
       </div>
       <div className="flex flex-col items-center justify-center">
-        <p className="text-base leading-relaxed m-0 justify-center">Here's what I can do</p>
+        <p className="text-base leading-relaxed m-0 justify-center text-white font-bold">Here's what I can do</p>
         <button id="skills" className="text-2xl">⬇</button>
       </div>
       <div id="skills-section" className="p-6 text-center mt-32">
-        <h2 className="text-gray-800 font-sans text-2xl font-semibold mb-20">My Skills</h2>
+        <h2 className="text-gray-800 font-sans text-2xl font-semibold mb-20 text-white ">My Skills</h2>
         {skills.map((category) => (
           <div className="mb-6" key={category.name}>
-            <h3 className="text-xl font-semibold mb-4">{category.name}</h3>
+            <h3 className="text-xl font-semibold mb-4 text-white font-bold">{category.name}</h3>
             <div className="flex flex-wrap gap-4 justify-center">
               {category.items.map((skill) => (
                 <div
@@ -110,7 +110,7 @@ const Info: React.FC = () => {
         ))}
       </div>
       <div className="flex flex-col  items-center justify-center p-6 text-center mt-12 mb-12 rounded-lg">
-        <h3 className="text-xl text-center text-black-600">Contact me if you feel my profile corresponds to what you're looking for :)</h3>
+        <h3 className="text-xl text-center text-black-600 text-white">Contact me if you feel my profile corresponds to what you're looking for :)</h3>
         <div className="flex justify-center mt-8 space-x-6 send-mail">
           <a className="text-black-400 hover:text-gray-500" href="mailto:alexis.labiolle@gmail.com">
             <span className="sr-only">Mail</span>

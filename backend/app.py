@@ -2,7 +2,7 @@ from flask_cors import CORS
 import os
 from flask import Flask, request, jsonify, render_template, send_from_directory
 
-app = Flask(__name__,  static_folder="static", static_url_path="")
+app = Flask(__name__,  static_folder="static", static_url_path="/static")
 CORS(app)
 
 
@@ -15,14 +15,9 @@ def serve_react(path):
     return send_from_directory(app.static_folder, 'index.html')
 
 
-
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def catch_all(path):
-    if os.path.exists(os.path.join(app.static_folder, path)):
-        return send_from_directory(app.static_folder, path)
-    else:
-        return send_from_directory(app.static_folder, 'index.html')
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(app.static_folder, 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
 @app.route('/static/<path:path>')

@@ -20,7 +20,7 @@ const projects = [
     name: 'Failed Millionaires',
     color: 'from-futuristic-700 to-futuristic-500',
     orbs: 6,
-    to:'https://failed-millionaires.store'
+    to:'https://failed-millionaires.fr'
   },
   {
     name: 'Revcom - AI for LinkedIn',
@@ -28,6 +28,12 @@ const projects = [
     orbs: 3,
     to: 'https://revcom.fr'
   },
+  {
+    name: 'EthTix',
+    color: 'from-futuristic-800 to-futuristic-500',
+    orbs: 2,
+    to: 'https://ethtix.fr'
+  }
 ];
 
 const orbVariants: Variants = {
@@ -115,9 +121,20 @@ function App() {
           </header>
           <main className="flex-1 flex flex-col items-center justify-center">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-              {projects.map((p) => (
-                <ProjectOrb key={p.name} {...p} />
-              ))}
+              {projects.map((p, index) => {
+                const isLast = index === projects.length - 1;
+                const isOdd = projects.length % 2 !== 0;
+                const shouldCenter = isLast && isOdd;
+
+                return (
+                  <div
+                    key={p.name}
+                    className={shouldCenter ? 'md:col-span-2 flex justify-center' : ''}
+                  >
+                    <ProjectOrb {...p} />
+                  </div>
+                );
+              })}
             </div>
           </main>
           <footer className="bg-gradient-to-r from-futuristic-900 via-futuristic-800 to-futuristic-700 w-full py-6 text-center">
