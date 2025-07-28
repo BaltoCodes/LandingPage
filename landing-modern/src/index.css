@@ -1,25 +1,12 @@
 @import "tailwindcss";
 
 body {
-  background: linear-gradient(135deg, #6d6494 0%, #7c68af 40%, #503d6e 70%, #413170 100%);
-
+  background: #18181b;
   min-height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.animated-bg {
-  background: linear-gradient(120deg, #2d0b4e 0%, #3a1c71 40%, #009fff 100%);
-  background-size: 200% 200%;
-  animation: gradientMove 8s ease-in-out infinite;
-}
-
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 

@@ -11,6 +11,12 @@ const projects = [
     to : 'https://crypto-rich.site'
   },
   {
+    name: 'Online resume',
+    color: 'from-futuristic-500 to-futuristic-200',
+    orbs: 5,
+    to : 'https://balto-cash.xyz'
+  },
+  {
     name: 'Launchpad Crypto',
     color: 'from-futuristic-600 to-futuristic-400',
     orbs: 4,
@@ -71,16 +77,16 @@ function ProjectOrb({ name, color, orbs, to }: { name: string; color: string; or
         onClick={() => {window.location.href = to}}
       >
         <motion.div
-          className={`w-32 h-32 rounded-full bg-gradient-to-br ${color} shadow-orb-glow flex items-center justify-center border-4 border-futuristic-500`}
+          className={`w-32 h-32 rounded-full bg-futuristic-500 shadow-orb-glow flex items-center justify-center border-2 border-futuristic-700 transition-all duration-200 cursor-pointer`}
           animate={{
             boxShadow: hovered
-              ? '0 0 60px 20px #a259f7, 0 0 120px 40px #7c3aed'
-              : '0 0 40px 10px #a259f7',
-            scale: hovered ? 1.08 : 1,
+              ? '0 0 24px 4px #64748b'
+              : '0 0 8px 2px #232329',
+            scale: hovered ? 1.04 : 1,
           }}
-          transition={{ type: 'spring', stiffness: 300 }}
+          transition={{ type: 'spring', stiffness: 200 }}
         >
-          <span className="text-white text-lg font-bold drop-shadow-lg text-center px-2">
+          <span className="text-futuristic-300 text-lg font-semibold drop-shadow-none text-center px-2">
             {name}
           </span>
           <AnimatePresence>
@@ -93,7 +99,7 @@ function ProjectOrb({ name, color, orbs, to }: { name: string; color: string; or
                   animate="animate"
                   exit="exit"
                   variants={orbVariants}
-                  className="absolute w-6 h-6 rounded-full bg-orb shadow-orb-glow border-2 border-futuristic-400"
+                  className="absolute w-6 h-6 rounded-full bg-orb shadow-orb-glow border border-futuristic-400"
                   style={{
                     left: '50%',
                     top: '50%',
@@ -113,14 +119,14 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={
-        <div className="min-h-screen flex flex-col justify-between">
-          <header className="py-8 text-center">
-            <h1 className="text-4xl md:text-6xl font-extrabold  uppercase tracking-wider text-white drop-shadow-lg font-exo2">
+        <div className="min-h-screen flex flex-col justify-between bg-futuristic-50 animate-futuristic-bg" style={{background: 'linear-gradient(90deg, #f8f6f3 0%, #f3ede7 50%, #f8f6f3 100%)', backgroundSize: '200% 200%'}}>
+          <header className="py-8 text-center bg-futuristic-800 shadow-soft">
+            <h1 className="text-4xl md:text-6xl font-extrabold uppercase tracking-wider text-futuristic-300 drop-shadow-none font-exo2">
               Balto Cash Corporation
             </h1>
           </header>
           <main className="flex-1 flex flex-col items-center justify-center">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
               {projects.map((p, index) => {
                 const isLast = index === projects.length - 1;
                 const isOdd = projects.length % 2 !== 0;
@@ -137,7 +143,7 @@ function App() {
               })}
             </div>
           </main>
-          <footer className="bg-gradient-to-r from-futuristic-900 via-futuristic-800 to-futuristic-700 w-full py-6 text-center">
+          <footer className="bg-futuristic-800 w-full py-6 text-center border-t border-futuristic-700">
             <div className="flex items-center justify-center mb-2">
               <a href="/info" className="text-futuristic-400 hover:text-futuristic-100 hover:font-bold transition-colors duration-200">
                 <span className="sr-only">Informations</span>

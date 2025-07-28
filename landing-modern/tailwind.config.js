@@ -10,22 +10,29 @@ module.exports = {
       },
       colors: {
         futuristic: {
-          900: '#1a0025',
-          800: '#2b0a3d',
-          700: '#3a1852',
-          600: '#4b2170',
-          500: '#7c3aed',
-          400: '#a78bfa',
-          300: '#c4b5fd',
+          900: '#18181b', // gris anthracite mat
+          800: '#232329', // gris foncé mat
+          700: '#2d2d34', // gris mat intermédiaire
+          600: '#3b3b43', // gris mat plus clair
+          500: '#4b5563', // gris-bleu mat
+          400: '#64748b', // gris-bleu clair mat
+          300: '#a1a1aa', // gris clair mat
+          50: '#f8f6f3', // blanc mat tirant vers le beige
+          100: '#f3ede7', // beige très clair
         },
-        orb: '#a259f7',
-        electric: '#a2597f',
-        light: '#d1a9ff'
+        orb: '#64748b', // gris-bleu mat pour les orbes
+        electric: '#64748b', // même teinte pour la cohérence
+        light: '#e5e7eb', // gris très clair mat
+        beige: '#f8f6f3',
+        beige2: '#f3ede7',
       },
       boxShadow: {
-        'orb-glow': '0 0 40px 10px #a259f7',
+        'orb-glow': '0 0 16px 2px #64748b', // ombre douce et mate
+        'soft': '0 2px 8px 0 rgba(24,24,27,0.08)',
+        'halo': '0 0 120px 40px #f3ede7',
       },
       animation: {
+        'futuristic-bg': 'futuristicBg 12s ease-in-out infinite',
         'float': 'float 3s ease-in-out infinite',
         'pop': 'pop 0.4s cubic-bezier(0.4,0,0.2,1) forwards',
       },
@@ -37,6 +44,10 @@ module.exports = {
         pop: {
           '0%': { transform: 'scale(0.5)', opacity: '0' },
           '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        futuristicBg: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
         },
       },
     },
