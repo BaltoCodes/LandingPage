@@ -14,7 +14,7 @@ const projects = [
     name: 'Online resume',
     color: 'from-futuristic-500 to-futuristic-200',
     orbs: 5,
-    to : 'https://balto-cash.xyz'
+    to : 'https://balto-cash.xyz/info'
   },
   {
     name: 'Launchpad Crypto',
