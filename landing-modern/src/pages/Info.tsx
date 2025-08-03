@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { Link } from 'react-router-dom';
+import ThreeScene from './ThreeScene';
+import { Canvas } from '@react-three/fiber'
+import { OrbitControls, Stars } from '@react-three/drei'
+import Hero from './Hero';
+import Skills from './Skills';
 
 // Traductions FR/EN pour tous les textes de la page
 const translations = {
   fr: {
+    short : "Passionné par l'innovation technologique",
     presentation: {
-      name: 'Alexis Archambault',
-      title: 'Quantitative Analyst Intern @ Opensee',
-      desc: "Étudiant à IMT Atlantique (Master informatique & ingénierie financière). Passionné par la programmation, la finance quantitative et la blockchain. J’aime créer des outils innovants et résoudre des problèmes complexes."
+      title: 'Quantitative Data Analyst @ Opensee',
+      desc: "Ancien étudiant de l'IMT Atlantique (Master informatique & ingénierie financière). Passionné par la programmation, la finance quantitative et la blockchain. J’aime créer des outils innovants et résoudre des problèmes complexes."
     },
+    technologies:"Autres technologies",
     experiences: 'Expériences',
+    competences: "Mes compétences",
     skills: 'Compétences',
     projects: 'Projets',
     contact: 'Contact',
@@ -20,12 +27,15 @@ const translations = {
     copyright: '© 2024 Balto Cash Corporation, Tous droits réservés.'
   },
   en: {
+    short : "Passionate about technological innovation",
     presentation: {
       name: 'Alexis Archambault',
       title: 'Quantitative Analyst Intern @ Opensee',
       desc: "Student at IMT Atlantique (Master in Computer Science & Financial Engineering). Passionate about programming, quantitative finance and blockchain. I love building innovative tools and solving complex problems."
     },
     experiences: 'Experience',
+    technologies:"Other technologies",
+    competences: "My skills",
     skills: 'Skills',
     projects: 'Projects',
     contact: 'Contact',
@@ -133,34 +143,35 @@ const Info: React.FC = () => {
   const t = translations[lang];
 
   return (
-    <div className="relative min-h-screen flex flex-col bg-futuristic-50 animate-futuristic-bg overflow-x-hidden" style={{background: 'linear-gradient(90deg, #f8f6f3 0%, #f3ede7 50%, #f8f6f3 100%)', backgroundSize: '200% 200%'}}>
+    <div className="relative min-h-screen flex flex-col bg-futuristic-50  animate-futuristic-bg overflow-x-hidden" style={{background: 'linear-gradient(90deg, #f8f6f3 0%, #f3ede7 50%, #f8f6f3 100%)', backgroundSize: '200% 200%'}}>
       {/* Sélecteur de langue en haut à droite */}
-      <div className="fixed top-4 right-8 z-30 flex gap-2">
+      <div className="fixed top-4 right-8 z-30 flex gap-2 cursor-pointer">
         <button
-          className={`px-3 py-1 rounded-full text-sm font-bold border transition-colors duration-200 ${lang==='fr' ? 'bg-futuristic-700 text-futuristic-50 border-futuristic-700' : 'bg-futuristic-100 text-futuristic-700 border-futuristic-300 hover:bg-futuristic-200'}`}
+          className={`px-3 py-1 rounded-full text-sm font-bold border hover:scale-105 transition-colors cursor-pointer duration-200 ${lang==='fr' ? 'bg-gray-300 text-futuristic-50 border-futuristic-700' : 'bg-futuristic-100 text-futuristic-700 border-futuristic-300 hover:bg-futuristic-200'}`}
           onClick={() => setLang('fr')}
           aria-label="Français"
         >FR</button>
         <button
-          className={`px-3 py-1 rounded-full text-sm font-bold border transition-colors duration-200 ${lang==='en' ? 'bg-futuristic-700 text-futuristic-50 border-futuristic-700' : 'bg-futuristic-100 text-futuristic-700 border-futuristic-300 hover:bg-futuristic-200'}`}
+          className={`px-3 py-1 rounded-full text-sm font-bold border hover:scale-105 transition-colors cursor-pointer duration-200 ${lang==='en' ? 'bg-gray-300 text-futuristic-50 border-futuristic-700' : 'bg-futuristic-100 text-futuristic-700 border-futuristic-300 hover:bg-futuristic-200'}`}
           onClick={() => setLang('en')}
           aria-label="English"
         >EN</button>
       </div>
       <Header />
-      <FuturisticParticles />
-      {/* Présentation */}
-      <section className="flex flex-col items-center justify-center pt-32 pb-12 px-4 z-10">
-        <div className="flex flex-col md:flex-row items-center w-full max-w-4xl gap-10">
-          <div className="w-48 h-48 md:w-56 md:h-56 mb-4 md:mb-0 flex-shrink-0 rounded-full shadow-halo overflow-hidden border-4 border-futuristic-100 bg-white">
+             
+      <Hero short={t.short}/>
+       {/* Présentation */}
+      <section className="relative flex flex-col items-center justify-center pt-32 pb-12 px-4 z-10">
+        {/* Contenu en avant-plan */}
+        <div className="relative z-10 flex flex-col md:flex-row items-center w-full max-w-4xl gap-10">
+          <div className="w-48 h-48 md:w-56 md:h-56 mb-4 md:mb-0 flex-shrink-0 rounded-full shadow-halo overflow-hidden border-4 border-futuristic-100 ">
             <img
               src="/images/balto-cash-bg-removed.png"
               alt="Alexis Archambault"
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="flex-1 bg-futuristic-100 bg-opacity-80 rounded-2xl shadow-soft p-8 text-left">
-            <h1 className="text-3xl md:text-4xl font-extrabold text-futuristic-700 mb-2 font-exo2">{t.presentation.name}</h1>
+          <div className="flex-1 bg-futuristic-100 bg-opacity-80 rounded-2xl shadow-soft p-8 text-left ">
             <h2 className="text-lg md:text-xl text-futuristic-500 mb-4 font-semibold">{t.presentation.title}</h2>
             <p className="text-futuristic-700 text-base md:text-lg leading-relaxed">
               {t.presentation.desc}
@@ -168,6 +179,11 @@ const Info: React.FC = () => {
           </div>
         </div>
       </section>
+
+
+
+
+
       {/* Expériences */}
       <section className="w-full max-w-4xl mx-auto px-4 py-8 z-10">
         <h2 className="text-2xl font-bold text-futuristic-700 mb-6 font-exo2">{t.experiences}</h2>
@@ -181,7 +197,9 @@ const Info: React.FC = () => {
           ))}
         </div>
       </section>
-      {/* Compétences */}
+
+      <Skills t={t}/>
+      {/* Compétences
       <section className="w-full max-w-4xl mx-auto px-4 py-8 z-10">
         <h2 className="text-2xl font-bold text-futuristic-700 mb-6 font-exo2">{t.skills}</h2>
         <div className="grid md:grid-cols-3 gap-8">
@@ -210,17 +228,18 @@ const Info: React.FC = () => {
           ))}
         </div>
       </section>
+       */}
       {/* Projets */}
       <section className="w-full max-w-4xl mx-auto px-4 py-8 z-10">
-        <h2 className="text-2xl font-bold text-futuristic-700 mb-6 font-exo2">{t.projects}</h2>
-        <div className="grid md:grid-cols-2 gap-6">
+        <h2 className="text-2xl font-bold text-futuristic-700 mb-6  font-exo2">{t.projects}</h2>
+        <div className="grid md:grid-cols-2 gap-6 ">
           {projects.map((project) => (
             <a
               key={project.name}
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="block bg-futuristic-100 bg-opacity-80 rounded-xl shadow-soft p-6 hover:shadow-halo transition-shadow duration-300 border border-futuristic-300"
+              className="block hover:scale-105 bg-futuristic-100 bg-opacity-80 rounded-xl shadow-soft p-6 hover:shadow-halo transition-shadow duration-300 border border-futuristic-300"
             >
               <h3 className="text-xl font-semibold text-futuristic-600 mb-2">{project.name}</h3>
               <p className="text-futuristic-700 text-base">{project.description}</p>

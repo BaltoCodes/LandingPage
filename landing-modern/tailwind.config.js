@@ -25,6 +25,17 @@ module.exports = {
         light: '#e5e7eb', // gris très clair mat
         beige: '#f8f6f3',
         beige2: '#f3ede7',
+        primary: '#6366f1',
+        secondary: '#8b5cf6',
+        accent: '#a855f7',
+        bgdark: '#fafafa',
+        bgdarker: '#f5f5f5',
+        'text-primary': '#1f2937',
+        'text-secondary': '#6b7280',
+        'text-muted': '#9ca3af',
+        'border-light': '#e5e7eb',
+        'glass': 'rgba(255, 255, 255, 0.8)',
+        'glass-dark': 'rgba(0, 0, 0, 0.05)',
       },
       boxShadow: {
         'orb-glow': '0 0 16px 2px #64748b', // ombre douce et mate

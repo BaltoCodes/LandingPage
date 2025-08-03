@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Routes, Route } from 'react-router-dom';
 import Info from './pages/Info';
+import Hero from './pages/Hero';
 
 const projects = [
   {
@@ -161,5 +162,6 @@ function App() {
     </Routes>
   );
 }
+
 
 export default App;
