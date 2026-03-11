@@ -15,13 +15,13 @@ const projects = [
     name: 'Online resume',
     color: 'from-futuristic-500 to-futuristic-200',
     orbs: 5,
-    to : 'https://balto-cash.xyz/info'
+    to : 'https://balto-cash.online/info'
   },
   {
     name: 'Launchpad Crypto',
     color: 'from-futuristic-600 to-futuristic-400',
     orbs: 4,
-    to:'https://fun-launchpad.tech/'
+    to:'https://launchpad.balto-cash.online/'
   },
   {
     name: 'Failed Millionaires',
